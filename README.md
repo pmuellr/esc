@@ -61,4 +61,30 @@ $ esc index '{index: foo body: {foo: 1}}'
         ...
     }
 }
+
+$ esc search '{index: foo}'
+{
+    "body": {
+        ...
+        "hits": {
+            "total": {
+                "value": 1,
+                "relation": "eq"
+            },
+            "max_score": 1,
+            "hits": [
+                {
+                    "_index": "foo",
+                    "_type": "_doc",
+                    "_id": "thtOCGwBjWnYRDyrYWYD",
+                    "_score": 1,
+                    "_source": {
+                        "foo": 1
+                    }
+                }
+            ]
+        }
+    },
+    ...
+}
 ```
