@@ -1,0 +1,53 @@
+{
+  "name": "esc",
+  "version": "1.0.0",
+  "description": "command-line utility to invoke elasticsearch requests",
+  "main": "esc.js",
+  "author": "pmuellr",
+  "bin": {
+    "esc": "esc.js"
+  },
+  "scripts": {
+    "build": "echo npm run build: TBD",
+    "deps-check": "node tools/deps-check.js",
+    "ts-check": "echo 'running ts-check'; tsc --allowJs --checkJs --noEmit --target ES5 --resolveJsonModule *.js",
+    "ncu": "ncu -u --packageFile package.json",
+    "serve": "serve",
+    "standard": "echo 'running standard'; standard --verbose",
+    "test": "npm run -s deps-check && npm run -s standard && npm run -s ts-check && npm run -s test:unit",
+    "test:unit": "echo 'running unit tests'; jest --colors",
+    "watch": "nodemon --exec 'npm run -s test; node tools/log-time finished'"
+  },
+  "homepage": "https://github.com/pmuellr/esc",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pmuellr/esc.git"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "verbose": true
+  },
+  "nodemonConfig": {
+    "ext": "js,ts,json,toml"
+  },
+  "dependencies": {
+    "@elastic/elasticsearch": "^7.2.0",
+    "meow": "^5.0.0",
+    "open": "^6.4.0",
+    "sloppy-json": "pmuellr/sloppy-json"
+  },
+  "devDependencies": {
+    "@types/node": "^12.0.10",
+    "dependency-check": "^3.3.0",
+    "nodemon": "^1.19.1",
+    "standard": "^12.0.1",
+    "typescript": "^3.5.2"
+  },
+  "standard": {
+    "ignore": [
+      "tmp/**/*",
+      "docs/**/*"
+    ]
+  }
+}
